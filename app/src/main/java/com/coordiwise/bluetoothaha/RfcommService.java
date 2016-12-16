@@ -7,6 +7,7 @@ import android.util.Log;
 
 public class RfcommService extends Service {
     public final static String TAG = "AAAA";
+    public RfcServer svc = null;
     public RfcommService() {
     }
 
@@ -19,6 +20,8 @@ public class RfcommService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.d(TAG, "onStartCommand");
+        svc = new RfcServer();
+        svc.Start();
         return super.onStartCommand(intent, flags, startId);
     }
 

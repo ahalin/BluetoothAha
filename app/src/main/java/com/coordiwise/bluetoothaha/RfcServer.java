@@ -15,7 +15,7 @@ import java.util.UUID;
  */
 
 public class RfcServer {
-    public static final String TAG = RfcServer.class.getName();
+    public static final String TAG = "AAAA";//RfcServer.class.getName();
     static final String SERVER_NAME = "AhaServer";
     private static final UUID MY_UUID_SECURE = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
     private final int maxBufLen = 1024;
@@ -102,6 +102,14 @@ public class RfcServer {
 
             bRun = true;
             while (bRun) {
+                Log.d(TAG, "run");
+                /*
+                try {
+                    sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                */
                 try {
                     serverSocket = ba.listenUsingRfcommWithServiceRecord(SERVER_NAME, MY_UUID_SECURE);
                 } catch (IOException e) {
@@ -122,6 +130,7 @@ public class RfcServer {
                     e.printStackTrace();
                 }
                 serverSocket = null;
+                Log.d(TAG, "socket connected");
 
                 if (open_inputStream() == false)
                     continue;
